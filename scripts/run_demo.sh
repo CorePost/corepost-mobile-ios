@@ -59,7 +59,7 @@ set_plist_string "DEMO_DISPLAY_NAME" "$DISPLAY_NAME"
 
 xcrun simctl io "$SIMULATOR_ID" recordVideo "$VIDEO_PATH" >/tmp/corepost-ios-video.log 2>&1 &
 RECORDER_PID=$!
-trap 'kill $RECORDER_PID >/dev/null 2>&1 || true' EXIT
+trap 'kill -INT $RECORDER_PID >/dev/null 2>&1 || true' EXIT
 
 xcodebuild test-without-building \
   -xctestrun "$PATCHED_XCTESTRUN" \
@@ -67,11 +67,11 @@ xcodebuild test-without-building \
   -only-testing:CorePostMobileIOSUITests/CorePostMobileIOSUITests/testDemoFlow \
   -resultBundlePath "$RESULT_BUNDLE_PATH"
 
-kill "$RECORDER_PID" >/dev/null 2>&1 || true
+kill -INT "$RECORDER_PID" >/dev/null 2>&1 || true
 wait "$RECORDER_PID" 2>/dev/null || true
 trap - EXIT
 
-rm -f "$SCREENSHOT_DIR"/*.png
+rm -f "$SCREENSHOT_DIR"/*.png "$SCREENSHOT_DIR"/manifest.json
 xcrun xcresulttool export attachments \
   --path "$RESULT_BUNDLE_PATH" \
   --output-path "$SCREENSHOT_DIR"
