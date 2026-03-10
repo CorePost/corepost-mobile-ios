@@ -12,13 +12,7 @@ struct PrimaryCapsuleButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: palette.colors.map { $0.opacity(0.95) },
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
+                    .fill(palette.primary.opacity(0.95))
             )
             .shadow(color: palette.primary.opacity(0.22), radius: 16, x: 0, y: 8)
             .scaleEffect(configuration.isPressed ? 0.98 : 1)

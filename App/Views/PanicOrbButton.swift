@@ -10,14 +10,7 @@ struct PanicOrbButton: View {
         Button(action: action) {
             ZStack {
                 Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: state.accent.colors.map { $0.opacity(isEnabled ? 0.95 : 0.55) } + [.black.opacity(0.1)],
-                            center: .topLeading,
-                            startRadius: 16,
-                            endRadius: 140
-                        )
-                    )
+                    .fill(state.accent.primary.opacity(isEnabled ? 0.95 : 0.55))
                     .frame(width: 228, height: 228)
                     .overlay(
                         Circle()
