@@ -21,7 +21,6 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_CFBundleDisplayName: CorePost
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.business
-        INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads: YES
         INFOPLIST_KEY_UIRequiresFullScreen: NO
         DEVELOPMENT_TEAM: ""
         TARGETED_DEVICE_FAMILY: "1"
@@ -29,6 +28,9 @@ targets:
         CODE_SIGN_STYLE: Automatic
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
         IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+      configs:
+        Debug:
+          INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads: YES
     scheme:
       testTargets:
         - CorePostMobileIOSUITests
